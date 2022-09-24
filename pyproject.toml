@@ -53,3 +53,8 @@ addopts = "tests -r a -v --doctest-modules src"
 
 [tool.pylint.format]
 max-line-length = 120
+
+[tool.pylint.messages_control]
+disable = "R0902"
+# justifications:
+# R0902 (too-many-instance-attributes) - addresses have lots of fields

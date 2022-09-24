@@ -1,5 +1,7 @@
 """Shipping models"""
 
+from __future__ import annotations
+
 import json
 from dataclasses import asdict, dataclass
 from enum import Enum
@@ -8,8 +10,8 @@ from enum import Enum
 class BillToSelector(str, Enum):
     """An enum for the shipment billing types"""
 
-    shipper = "shipper"
-    third_party = "third_party"
+    SHIPPER = "shipper"
+    THIRD_PARTY = "third_party"
 
 
 @dataclass
@@ -78,7 +80,7 @@ if __name__ == '__main__':
 
                     ),
                     billing=BillingInfo(
-                        bill_to=BillToSelector.shipper,
+                        bill_to=BillToSelector.SHIPPER,
                     ),
                     packages=[
 

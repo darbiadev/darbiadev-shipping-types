@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-import json
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from enum import Enum
 
 
@@ -66,27 +65,3 @@ class Shipment:
     reference3: str | None = None
     reference4: str | None = None
     reference5: str | None = None
-
-
-if __name__ == '__main__':
-    print(
-        json.dumps(
-            asdict(
-                Shipment(
-                    ship_from=Address(
-
-                    ),
-                    ship_to=Address(
-
-                    ),
-                    billing=BillingInfo(
-                        bill_to=BillToSelector.SHIPPER,
-                    ),
-                    packages=[
-
-                    ],
-                )
-            ),
-            indent=4
-        )
-    )

@@ -1,15 +1,14 @@
 [project]
 name = "darbiadev-shipping-types"
-version = "0.6.5"
+version = "0.7.0"
 description = "A set of types to provide a consistent interface across multiple packages"
 readme = "README.md"
 authors = [
     { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
 ]
 license = { text = "MIT" }
-requires-python = ">=3.7"
-dependencies = [
-]
+requires-python = ">=3.8"
+dependencies = []
 
 [project.urls]
 repository = "https://github.com/darbiadev/darbiadev-shipping-types/"
@@ -17,44 +16,48 @@ documentation = "https://darbiadev.github.io/darbiadev-shipping-types/"
 
 [project.optional-dependencies]
 dev = [
-    "pylint>=2.12.2",
-    "pytest>=6.2.5",
-    "pytest-cov>=3.0.0",
-    "black>=21.12b0",
+    "pre-commit",
+    "black",
+    "ruff",
 ]
 tests = [
-    "pytest>=6.2.5",
+    "pytest",
 ]
 docs = [
-    "sphinx>=4.3.2",
-    "sphinxcontrib-autoprogram>=0.1.7",
-    "sphinx-rtd-theme>=1.0.0",
-    "toml>=0.10.2",
+    "sphinx",
+    "furo",
+    "sphinx-autoapi",
+    "releases",
 ]
 
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.sphinx]
-copyright = "Darbia"
-author = "Bradley Reynolds"
-api_dir = "darbiadev_shipping_types"
-
 [tool.black]
-target-version = ["py310"]
+target-version = ["py38"]
 line-length = 120
 
-[tool.isort]
-profile = "black"
+[tool.ruff]
+target-version = "py38"
+line-length = 120
+select = ["ALL"]
+ignore = [
+    "PLC0414", # (Import alias does not rename original package) - Re-exporting
+]
 
-[tool.pytest.ini_options]
-addopts = "tests -r a -v --doctest-modules src"
+[tool.ruff.extend-per-file-ignores]
+"docs/*" = [
+    "INP001", # (File `tests/*.py` is part of an implicit namespace package. Add an `__init__.py`.) - Docs are not modules
+    "FA102", # (Missing `from __future__ import annotations`, but uses PEP 585 collection) - Docs are actually built on the latest stable release of Python
+]
+"tests/*" = [
+    "INP001", # (File `tests/*.py` is part of an implicit namespace package. Add an `__init__.py`.) - Tests are not modules
+    "S101", # (Use of `assert` detected) - Yes, that's the point
+]
 
-[tool.pylint.format]
-max-line-length = 120
+[tool.ruff.isort]
+known-first-party = ["letsbuilda.pypi"]
 
-[tool.pylint.messages_control]
-disable = "R0902"
-# justifications:
-# R0902 (too-many-instance-attributes) - addresses have lots of fields
+[tool.ruff.pydocstyle]
+convention = "numpy"

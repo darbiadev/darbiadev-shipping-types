@@ -42,9 +42,7 @@ line-length = 120
 target-version = "py38"
 line-length = 120
 select = ["ALL"]
-ignore = [
-    "PLC0414", # (Import alias does not rename original package) - Re-exporting
-]
+ignore = []
 
 [tool.ruff.extend-per-file-ignores]
 "docs/*" = [

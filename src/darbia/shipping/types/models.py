@@ -1,4 +1,4 @@
-"""Shipping models"""
+"""Shipping models."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from enum import Enum
 
 
 class BillToSelector(str, Enum):
-    """An enum for the shipment billing types"""
+    """An enum for the shipment billing types."""
 
     SHIPPER = "shipper"
     THIRD_PARTY = "third_party"
@@ -15,7 +15,7 @@ class BillToSelector(str, Enum):
 
 @dataclass
 class Address:
-    """A street address"""
+    """A street address."""
 
     company: str | None = None
     attention_to: str | None = None
@@ -30,7 +30,7 @@ class Address:
 
 @dataclass
 class BillingInfo:
-    """A wrapper for a set of billing information"""
+    """A wrapper for a set of billing information."""
 
     bill_to: BillToSelector
     billing_account: str | None = None
@@ -39,7 +39,7 @@ class BillingInfo:
 
 @dataclass
 class Package:
-    """A package"""
+    """A package."""
 
     weight: float
     length: float
@@ -54,7 +54,7 @@ class Package:
 
 @dataclass
 class Shipment:
-    """A complete shipment"""
+    """A complete shipment."""
 
     ship_from: Address
     ship_to: Address

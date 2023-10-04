@@ -1,6 +1,6 @@
 [project]
 name = "darbiadev-shipping-types"
-version = "0.7.0"
+version = "0.1.0"
 description = "A set of types to provide a consistent interface across multiple packages"
 readme = "README.md"
 authors = [

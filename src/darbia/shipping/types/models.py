@@ -32,7 +32,7 @@ class Address:
 class BillingInfo:
     """A wrapper for a set of billing information."""
 
-    bill_to: BillToSelector
+    bill_to: BillToSelector | None = None
     billing_account: str | None = None
     billing_address: Address | None = None
 
@@ -41,10 +41,10 @@ class BillingInfo:
 class Package:
     """A package."""
 
-    weight: float
-    length: float
-    width: float
-    height: float
+    weight: float | None = None
+    length: float | None = None
+    width: float | None = None
+    height: float | None = None
     reference1: str | None = None
     reference2: str | None = None
     reference3: str | None = None
@@ -56,11 +56,11 @@ class Package:
 class Shipment:
     """A complete shipment."""
 
-    shipment_id: str
-    ship_from: Address
-    ship_to: Address
-    billing: BillingInfo
-    packages: list[Package]
+    shipment_id: str | None = None
+    ship_from: Address | None = None
+    ship_to: Address | None = None
+    billing: BillingInfo | None = None
+    packages: list[Package] | None = None
     reference1: str | None = None
     reference2: str | None = None
     reference3: str | None = None

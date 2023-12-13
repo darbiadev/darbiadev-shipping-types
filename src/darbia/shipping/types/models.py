@@ -56,6 +56,7 @@ class Package:
 class Shipment:
     """A complete shipment."""
 
+    shipment_id: str
     ship_from: Address
     ship_to: Address
     billing: BillingInfo

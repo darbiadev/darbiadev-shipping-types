@@ -1,9 +1,6 @@
 Changelog
 =========
 
-- :release:`0.3.0 <12th December 2023>`
-- :feature:`12` Make all fields nullable
-
 - :release:`0.2.0 <12th December 2023>`
 - :feature:`10` Initialize package
 

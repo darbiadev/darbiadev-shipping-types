@@ -9,9 +9,7 @@ USAGE
 COMMANDS
     init              install Python build tools
     install-dev       install local package in editable mode
-    update-deps       update the dependencies
-    upgrade-deps      upgrade the dependencies
-    lint              run `pre-commit`, `black`, and `ruff`
+    lint              run `pre-commit` and `ruff`
     test              run `pytest`
     build-dist        run `python -m build`
     clean             delete generated content
@@ -19,7 +17,7 @@ COMMANDS
 #>
 param(
     [Parameter(Position = 0)]
-    [ValidateSet("init", "install-dev", "update-deps", "upgrade-deps", "lint", "test", "build-dist", "clean", "help")]
+    [ValidateSet("init", "install-dev", "lint", "test", "build-dist", "clean", "help")]
     [string]$Command
 )
 
@@ -38,22 +36,12 @@ function Invoke-Install-Dev
     python -m pip install --upgrade --editable ".[dev, tests, docs]"
 }
 
-function Invoke-Update-Deps
-{
-    pip-compile --output-file requirements.txt --resolver=backtracking requirements.in
-}
-
-function Invoke-Upgrade-Deps
-{
-    pre-commit autoupdate
-    pip-compile --output-file requirements.txt --resolver=backtracking --upgrade requirements.in
-}
-
 function Invoke-Lint
 {
     pre-commit run --all-files
-    python -m black .
     python -m ruff --fix .
+    python -m ruff format .
+    python -m mypy --strict src/
 }
 
 function Invoke-Test
@@ -91,12 +79,6 @@ switch ($Command)
     }
     "lint"  {
         Invoke-Lint
-    }
-    "update-deps"  {
-        Invoke-Update-Deps
-    }
-    "upgrade-deps"  {
-        Invoke-Upgrade-Deps
     }
     "test"    {
         Invoke-Test

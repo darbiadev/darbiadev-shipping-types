@@ -1,8 +1,11 @@
 Changelog
 =========
 
-- :release:`0.3.0 <27th December 2023>`
+- :release:`0.4.0 <27th December 2023>`
 - :feature:`15` Add py.typed file
+
+- :release:`0.3.0 <12th December 2023>`
+- :feature:`13` Make all fields nullable by
 
 - :release:`0.2.0 <12th December 2023>`
 - :feature:`10` Initialize package

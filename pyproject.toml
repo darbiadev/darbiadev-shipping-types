@@ -17,11 +17,12 @@ documentation = "https://darbiadev.github.io/darbiadev-shipping-types/"
 [project.optional-dependencies]
 dev = [
     "pre-commit",
-    "black",
     "ruff",
+    "mypy",
 ]
 tests = [
     "pytest",
+    "pytest-randomly",
 ]
 docs = [
     "sphinx",
@@ -39,15 +40,15 @@ build-backend = "setuptools.build_meta"
     "py.typed",
 ]
 
-[tool.black]
-target-version = ["py38"]
-line-length = 120
-
 [tool.ruff]
-target-version = "py38"
-line-length = 120
+preview = true
+unsafe-fixes = true
+target-version = "py312"
 select = ["ALL"]
-ignore = []
+line-length = 120
+ignore = [
+    "CPY001", # (Missing copyright notice at top of file) - No license
+]
 
 [tool.ruff.extend-per-file-ignores]
 "docs/*" = [
